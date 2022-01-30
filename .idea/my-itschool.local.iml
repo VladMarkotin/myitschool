@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/filMan.local/core/exceptions" isTestSource="false" packagePrefix="Core\Exceptions\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/filMan.local/core/router" isTestSource="false" packagePrefix="Core\router\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/filMan.local/core/db" isTestSource="false" packagePrefix="Core\DB\" />
+      <sourceFolder url="file://$MODULE_DIR$/filMan.local/core" isTestSource="false" packagePrefix="Core\" />
+      <sourceFolder url="file://$MODULE_DIR$/filMan.local/core/template" isTestSource="false" packagePrefix="Core\Template\" />
+      <sourceFolder url="file://$MODULE_DIR$/filMan.local/app/controllers" isTestSource="false" packagePrefix="App\Controllers\" />
+      <sourceFolder url="file://$MODULE_DIR$/filMan.local/app/models" isTestSource="false" packagePrefix="App\Model\" />
+      <sourceFolder url="file://$MODULE_DIR$/filMan.local/app/controllers/Validator" isTestSource="false" packagePrefix="App\Controllers\Validator\" />
+      <sourceFolder url="file://$MODULE_DIR$/filMan.local/app/controllers/Request" isTestSource="false" packagePrefix="App\Controllers\Request\" />
+      <excludeFolder url="file://$MODULE_DIR$/filMan.local/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/filMan.local/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/filMan.local/vendor/twbs/bootstrap" />
+      <excludeFolder url="file://$MODULE_DIR$/filMan.local/vendor/twig/twig" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

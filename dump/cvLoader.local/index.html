@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV Loader</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+            <ul id="menu">
+                <li><a href="backend/list.php"> Список резюме</a></li>
+                <li id="name"><a href="/">CV Loader</a></li>
+                <li>Stabb</li>
+            </ul>
+        </div>
+        <div class="body">
+            <div class="body_head">
+                <h2>Загрузите свое резюме:</h2>
+                <form method="post" action="backend/process.php" name="cv_form" enctype="multipart/form-data">
+                    <p>Имя:<input name="name" type="text" ></p>
+                    <p>Фамилия:<input name="surname" type="text"></p>
+                    <p>Файл: <input type="file" name="file"></p>
+                    <button type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

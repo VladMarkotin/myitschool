@@ -1,0 +1,268 @@
+$(document).ready(function (){
+        if ($('*').is( "input[type=radio]" )){
+        	console.log("There are some radios");
+          
+          $("input[type=radio]").on("click",function (){
+              console.log(" event whith radio! ");
+              var index = $("input[type=radio]").index(this);
+              console.log("Index of clicked element:" + index);
+              
+              function ProgressBar(){
+
+                var value;
+                var max;
+                var min;
+
+                function DrawProgressBar(variant_value = -1){
+                  $(`<progress id="quantity_level"></progress>`).
+                  appendTo($("#AddToCartForm--product-template"));
+				  if(variant_value == -1)
+                  	$('#quantity_level').attr("value",value );
+                  else
+                    $('#quantity_level').attr("value",variant_value );
+                  $('#quantity_level').attr("max", max );
+
+                  if (variant_value == -1){
+                  	
+                    	if ((value / max) * 100 < 25 ){
+                          $('#quantity_level').addClass("min-progressbar");
+                        }
+                        else{
+                            $('#quantity_level').addClass("max-progressbar");
+                        }
+                          console.log(value / max);
+                  }
+                  else{
+                  	if ((variant_value / max) * 100 < 25 ){
+                          $('#quantity_level').addClass("min-progressbar");
+                        }
+                        else{
+                            $('#quantity_level').addClass("max-progressbar");
+                        }
+                  }
+                  
+                  //$('#quantity_level').attr("min",min );
+                }
+
+                function clearPreviousProgressBar(){
+
+                	$("#quantity_level").remove();
+                }
+
+                function getQuantity(products = 0){
+
+                var quantity = 0;
+
+                {% for variant in product.variants %}
+                quantity += {{ variant.inventory_quantity }}
+                {% endfor %}
+
+                return quantity;
+
+                }
+                
+                function getVariantQuantity(){
+                    var quantity = 0;
+                    var flag = 0;
+                    var variantQuantity = 0;
+
+                    {% for variant in product.variants %}
+                    if (flag == index){
+                    	variantQuantity += {{ variant.inventory_quantity }}
+                    }
+
+                    flag++;
+                    {% endfor %}
+
+                    return variantQuantity;
+                }
+
+                /*settings - array*/
+                this.initProgressBar = function (){
+
+                  var settings = myStockChartConf.settings;
+                  var variant_quantity = -1;
+
+
+                  for (var i = 0; i < settings.length; i++){
+                    if (settings[i].product_id == {{product.id}} ){
+                    min = settings[i].min;
+                    max = settings[i].max;
+                    }
+                  }
+
+
+                  //var product_variants = {{ product }};
+                  value = getQuantity();//settings[3].quantity;
+                  variant_quantity = getVariantQuantity(); //
+                  clearPreviousProgressBar();
+                    
+                    if(variant_quantity == -1)  
+                    	DrawProgressBar(quantity);
+                  DrawProgressBar(variant_quantity);
+
+
+                }
+    		}
+
+
+              function Product(config){
+
+              var product_min = 0;
+              var product_max = 10;
+              var product_quantity = 0;
+
+              this.setMin = function (min){
+              product_min = min;
+              }
+
+              this.setMax = function (max){
+              product_max = max;
+              }
+
+              this.setQuantity = function ( quantity ){
+              product_quantity = quantity;
+              }
+
+              this.getQuantity = function (){
+              return product_quantity;
+              }
+
+              this.getMin = function (){
+              return product_min;
+              }
+
+              this.getMax = function (){
+              return product_max;
+              }
+
+
+              }
+              
+                
+               pB = new ProgressBar();
+    		   pB.initProgressBar();
+            });
+        }
+        else{
+        	function ProgressBar(){
+
+                var value;
+                var max;
+                var min;
+
+                function DrawProgressBar(variant_value = -1){
+                  $(`<progress id="quantity_level"></progress>`).
+                  appendTo($("#AddToCartForm--product-template"));
+				  if(variant_value == -1)
+                  	$('#quantity_level').attr("value",value );
+                  else
+                    $('#quantity_level').attr("value",variant_value );
+                  $('#quantity_level').attr("max", max );
+
+                  if ((value / max) * 100 < 25 ){
+                  $('#quantity_level').addClass("min-progressbar");
+                  }
+                  else{
+                  $('#quantity_level').addClass("max-progressbar");
+                  }
+                  console.log(value / max);
+                  //$('#quantity_level').attr("min",min );
+                }
+
+                function clearPreviousProgressBar(){
+
+                	$("#quantity_level").remove();
+                }
+
+                function getQuantity(products = 0){
+
+                var quantity = 0;
+
+                {% for variant in product.variants %}
+                	quantity += {{ variant.inventory_quantity }}
+                {% endfor %}
+
+                return quantity;
+
+                }
+                
+                function getVariantQuantity(){
+                    var quantity = 0;
+                    var flag = 0;
+                    var variantQuantity = 0;
+
+                    {% for variant in product.variants %}
+                    if (flag == index){
+                    	variantQuantity += {{ variant.inventory_quantity }}
+                    }
+
+                    flag++;
+                    {% endfor %}
+
+                    return variantQuantity;
+                }
+
+                /*settings - array*/
+                this.initProgressBar = function (){
+
+                  var settings = myStockChartConf.settings;
+                  var variant_quantity = -1;
+
+
+                  for (var i = 0; i < settings.length; i++){
+                    if (settings[i].product_id == {{product.id}} ){
+                    min = settings[i].min;
+                    max = settings[i].max;
+                    }
+                  }
+
+
+                  //var product_variants = {{ product }};
+                  value = getQuantity();//settings[3].quantity;
+                  //variant_quantity = getVariantQuantity(); //
+                  clearPreviousProgressBar();
+                  DrawProgressBar(variant_quantity);
+
+
+                }
+    		}
+
+
+              function Product(config){
+
+              var product_min = 0;
+              var product_max = 10;
+              var product_quantity = 0;
+
+              this.setMin = function (min){
+              product_min = min;
+              }
+
+              this.setMax = function (max){
+              product_max = max;
+              }
+
+              this.setQuantity = function ( quantity ){
+              product_quantity = quantity;
+              }
+
+              this.getQuantity = function (){
+              return product_quantity;
+              }
+
+              this.getMin = function (){
+              return product_min;
+              }
+
+              this.getMax = function (){
+              return product_max;
+              }
+
+
+              }
+              
+                
+               pB = new ProgressBar();
+    		   pB.initProgressBar();
+        }
